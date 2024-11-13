@@ -116,7 +116,7 @@ def rms_norm_backward_kernel_dx(
     a_hat = a * rstd_ref[...]
     wdout = weight * dout
     c1_acc_ref[:] += a_hat * wdout
-  c1 = for_loop(pl.cdiv(n_col, block_size), mean_body, jnp.zeros(block_size))
+  c1 = for_loop(pl.cdiv(n_col, block_size), mean_body, jnp.cos(jnp.zeros(block_size)))
   c1 = c1.sum() / n_col
 
   def dx_body(i, acc_ref):
